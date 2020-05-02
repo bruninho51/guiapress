@@ -1,0 +1,26 @@
+<%- include('../../partials/header.ejs') %>
+<%- include('../../partials/navbar.ejs') %>
+
+<div class="container">
+	<div class="card">
+		<div class="card-title">
+			<h1><%= Object.keys(category).length ? 
+				'Edit Category' : 
+				'Create Category' 
+			%></h1>
+		</div>
+		<div class="card-body">
+			<form method="POST" action="/categories/save">
+				<input type="hidden" name="id" value="<%= category.id ? category.id : '' %>">
+				<input 
+					class="form-control" 
+					type="text" 
+					name="title" 
+					placeholder="Defina o título da categoria"
+					value="<%= category.title ? category.title : '' %>"><br>
+				<button class="btn btn-success">Save</button>
+			</form>
+		</div>
+	</div>
+</div>
+<%- include('../../partials/footer.ejs') %>

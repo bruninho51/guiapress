@@ -1,0 +1,39 @@
+<%- include('../../partials/header.ejs') %>
+<%- include('../../partials/navbar.ejs') %>
+
+<div class="container">
+	<hr>
+	<h2>Users</h2>
+	<a class="btn btn-success" href="/admin/users/create">
+		Create User
+	</a>
+	<hr>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>E-mail</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% users.forEach(user => { %>
+			<tr>
+                <td><%= user.id %></td>
+                <td><%= user.email %></td>
+			</tr>
+			<% }); %>
+		</tbody>	
+	</table>
+</div>
+<%- include("../../partials/footer.ejs") %>
+<script>
+	var confirmarDelecao = function(event, form) {
+		event.preventDefault();
+		let decision = confirm("Você realmente deseja apagar o usuário?");
+		if(decision) {
+			form.submit();
+		}
+	}
+</script>
+
+<%- include('../../partials/footer.ejs') %>
